@@ -1,34 +1,33 @@
-Table Product {
-  id int [pk, increment]
-  name string [not null]
+Table Products as P{
+  id int [pk, not null]
+  name string [unique, not null]
+  price float4 [not null]
   photo varbinary [not null]
 }
 
-Table Entry {
-  id int [pk, increment]
-  products ref [not null, ref: < Product.id]
+Table Categories as C{
+  id int [pk, not null]
+  name string [unique, not null]
 }
 
-Table Main {
-  id int [pk, increment]
-  products ref [not null, ref: < Product.id]
+Table Relations as R{
+  id int [pk, not null]
+  product_id int [not null, ref: > P.id]
+  categorie_id int [not null, ref: > C.id]
 }
 
-Table Dessert {
-  id int [pk, increment]
-  products ref [not null, ref: < Product.id]
-}
-
-Table Drinks {
-  id int [pk, increment]
-  products ref [not null, ref: < Product.id]
-}
-
-Table User {
-  id int [pk, increment]
-  username string [not null]
-  avatar varbinary [not null]
-  email string [not null]
+Table User as U{
+  id int [pk, not null]
+  name string [not null]
+  email string [unique, not null]
   password string [not null]
-  favorites ref [ref: < Product.id]
+  profile_pic varbinary [not null]
+  is_admin boolean [not null]
 }
+
+Table Favorites as F{
+  id int [pk, not null]
+  user_id int [not null, ref: > U.id]
+  product_id int [not null, ref: > P.id]
+}
+
