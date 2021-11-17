@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2021_11_16_135433) do
 
   add_foreign_key "relations", "categories"
   add_foreign_key "relations", "products"
+  
+end
 
 ActiveRecord::Schema.define(version: 2021_11_15_180659) do
 
