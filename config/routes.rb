@@ -1,3 +1,15 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :users, skip: :all
+  namespace 'api' do
+    namespace 'v1' do
+      scope 'user' do
+        get 'index', to: 'user#index'
+        get 'show/:id', to: 'user#show'
+        get 'create', to: 'user#create'
+        put 'update/:id', to: 'user#update'
+        patch 'update/:id', to: 'user#update'
+        delete 'delete/:id', to: 'user#delete'
+      end
+    end
+  end
 end
