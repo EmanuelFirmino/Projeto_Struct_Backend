@@ -5,3 +5,37 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+# salgados
+Product.create(name:"coxinha", price: 4.50)
+Product.create(name:"pastel", price: 6.0)
+Product.create(name:"misto", price: 3.50)
+
+# doces
+Product.create(name:"sonho", price: 4.0)
+Product.create(name:"donut", price: 3.0)
+Product.create(name:"salada de frutas", price: 3.50)
+
+# bebidas
+Product.create(name:"suco", price: 5.0)
+Product.create(name:"agua", price: 2.50)
+Product.create(name:"cafe", price: 3.50)
+
+# categorias
+Category.create(name:"salgado")
+Category.create(name:"doce")
+Category.create(name:"bebida")
+
+# relações
+Relation.create(product_id: 1, category_id: 1)
+Relation.create(product_id: 2, category_id: 1)
+Relation.create(product_id: 3, category_id: 1)
+
+Relation.create(product_id: 4, category_id: 2)
+Relation.create(product_id: 5, category_id: 2)
+Relation.create(product_id: 6, category_id: 2)
+
+Relation.create(product_id: 7, category_id: 3)
+Relation.create(product_id: 8, category_id: 3)
+Relation.create(product_id: 9, category_id: 3)
