@@ -1,4 +1,6 @@
 class Api::V1::UserController < ApplicationController
+
+    wrap_parameters :user, include: [:name, :password, :email]
     def index
         users = User.all
         render json: users, status: 200
@@ -8,8 +10,8 @@ class Api::V1::UserController < ApplicationController
         user = User.new(user_params)
         user.save!
         render json: user, status: 201
-    rescue StandardError
-        head(:unprocessable_entity)
+    rescue StandardError => error
+        render json: error, status: 500
     end
 
     def show
