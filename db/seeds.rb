@@ -39,3 +39,22 @@ Relation.create(product_id: 6, category_id: 2)
 Relation.create(product_id: 7, category_id: 3)
 Relation.create(product_id: 8, category_id: 3)
 Relation.create(product_id: 9, category_id: 3)
+
+# users
+User.create(email:"user_1@mail.com", password:"123456", name:"user_1", is_admin: false)
+User.create(email:"user_2@mail.com", password:"123456", name:"user_2", is_admin: false)
+User.create(email:"user_3@mail.com", password:"123456", name:"user_3", is_admin: false)
+
+# favorites
+Favorite.create(product_id: 1, user_id: 1)
+Favorite.create(product_id: 2, user_id: 1)
+Favorite.create(product_id: 3, user_id: 1)
+
+Favorite.create(product_id: 4, user_id: 2)
+Favorite.create(product_id: 5, user_id: 2)
+Favorite.create(product_id: 6, user_id: 2)
+
+Favorite.create(product_id: 7, user_id: 3)
+Favorite.create(product_id: 8, user_id: 3)
+Favorite.create(product_id: 9, user_id: 3)
+
