@@ -1,6 +1,25 @@
 class Api::V1::UserController < ApplicationController
-
+    acts_as_token_authentication_handler_for User, only: :logout
     wrap_parameters :user, include: [:name, :password, :email]
+
+    def login
+        user = User.find_by!(email: params[:email])
+        if user.valid_password?(params[:password])
+            render json: user, status: 200
+        else
+            head(:unauthorized)
+        end
+    rescue StandardError => error
+        render json: error, status: 404
+    end
+
+    def logout
+        current_user.update! authentication_token: nil
+        render json: {message: 'Volte sempre!'}
+    rescue StandardError => error
+        render json: error, status: :bad_request
+    end
+
     def index
         users = User.all
         render json: users, status: 200
