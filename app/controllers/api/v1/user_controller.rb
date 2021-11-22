@@ -1,4 +1,5 @@
 class Api::V1::UserController < ApplicationController
+
     acts_as_token_authentication_handler_for User, only: :logout
     wrap_parameters :user, include: [:name, :password, :email]
 
@@ -19,6 +20,7 @@ class Api::V1::UserController < ApplicationController
     rescue StandardError => error
         render json: error, status: :bad_request
     end
+
 
     def index
         users = User.all
@@ -54,9 +56,20 @@ class Api::V1::UserController < ApplicationController
         head(:bad_request)
     end
 
+    def my_favorites
+        user = User.find(params[:id])
+        render json: user.favorites , status: :ok
+    rescue StandardError
+        head(:not_found) 
+    end
+
     private
 
     def user_params
+
+        params.require(:user).permit(:name, :email, :password, :is_admin, :profile_pic)
+
         params.require(:user).permit(:name, :email, :password, :profile_pic)
+
     end
 end
