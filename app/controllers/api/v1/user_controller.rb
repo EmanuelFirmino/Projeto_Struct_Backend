@@ -1,5 +1,27 @@
 class Api::V1::UserController < ApplicationController
-    
+
+    acts_as_token_authentication_handler_for User, only: :logout
+    wrap_parameters :user, include: [:name, :password, :email]
+
+    def login
+        user = User.find_by!(email: params[:email])
+        if user.valid_password?(params[:password])
+            render json: user, status: 200
+        else
+            head(:unauthorized)
+        end
+    rescue StandardError => error
+        render json: error, status: 404
+    end
+
+    def logout
+        current_user.update! authentication_token: nil
+        render json: {message: 'Volte sempre!'}
+    rescue StandardError => error
+        render json: error, status: :bad_request
+    end
+
+
     def index
         users = User.all
         render json: users, status: 200
@@ -9,8 +31,8 @@ class Api::V1::UserController < ApplicationController
         user = User.new(user_params)
         user.save!
         render json: user, status: 201
-    rescue StandardError
-        head(:unprocessable_entity)
+    rescue StandardError => error
+        render json: error, status: 500
     end
 
     def show
@@ -44,6 +66,10 @@ class Api::V1::UserController < ApplicationController
     private
 
     def user_params
+
         params.require(:user).permit(:name, :email, :password, :is_admin, :profile_pic)
+
+        params.require(:user).permit(:name, :email, :password, :profile_pic)
+
     end
 end
