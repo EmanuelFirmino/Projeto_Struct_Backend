@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   validates :name, :email, :password, presence: true
 
+  validates :is_admin, inclusion: {in: [true, false]}
+  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
@@ -15,3 +18,5 @@ class User < ApplicationRecord
   has_many :products, through: :favorites
 
 end
+
+

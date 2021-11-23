@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :relation do
-    product { nil }
-    category { nil }
+    product_id { 1 }
+    category_id { 2 }
   end
 end
