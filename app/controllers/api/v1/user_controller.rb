@@ -9,8 +9,8 @@ class Api::V1::UserController < ApplicationController
         user = User.new(user_params)
         user.save!
         render json: user, status: 201
-    rescue StandardError
-        head(:unprocessable_entity)
+    rescue StandardError => error
+        render json: error.message, status: 500
     end
 
     def show
@@ -36,7 +36,7 @@ class Api::V1::UserController < ApplicationController
 
     def my_favorites
         user = User.find(params[:id])
-        render json: user.favorites , status: :ok
+        render json: user.products , status: :ok
     rescue StandardError
         head(:not_found) 
     end
@@ -44,6 +44,6 @@ class Api::V1::UserController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:name, :email, :password, :is_admin, :profile_pic)
+        params.require(:user).permit(:name, :email, :password, :profile_pic)
     end
 end
