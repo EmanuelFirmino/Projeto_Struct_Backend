@@ -1,0 +1,15 @@
+current directory: /home/arthur/Documents/treineeStruct/projetoFinal/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+/home/arthur/.rvm/rubies/ruby-2.7.1/bin/ruby -I /home/arthur/.rvm/rubies/ruby-2.7.1/lib/ruby/2.7.0 -r ./siteconf20211123-52821-lqfkpr.rb extconf.rb
+creating Makefile
+
+current directory: /home/arthur/Documents/treineeStruct/projetoFinal/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /home/arthur/Documents/treineeStruct/projetoFinal/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /home/arthur/Documents/treineeStruct/projetoFinal/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -m 0755 websocket_mask.so ./.gem.20211123-52821-hs1p2a
