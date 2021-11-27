@@ -1,1 +1,4 @@
-# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+User-agent: Googlebot
+Disallow: /api/v1/user/index
+Disallow: /api/v1/user/delete
+Disallow: /api/v1/user/update
