@@ -8,19 +8,31 @@
 
 
 # salgados
-Product.create(name:"coxinha", price: 4.50)
-Product.create(name:"pastel", price: 6.0)
-Product.create(name:"misto", price: 3.50)
+Product.create(name:"coxinha", price: 4.50, description: "coxinha tradicional")
+Product.last.image.attach(io: File.open('./public/coxinha.jpeg'), filename: 'coxinha.jpeg')
+Product.create(name:"pastel", price: 6.0, description: "frito na hora")
+Product.last.image.attach(io: File.open('./public/pastel.jpg'), filename: 'pastel.jpg')
+Product.create(name:"misto", price: 3.50, description: "misto tradional")
+Product.last.image.attach(io: File.open('./public/misto.jpeg'), filename: 'misto.jpeg')
+
 
 # doces
-Product.create(name:"sonho", price: 4.0)
-Product.create(name:"donut", price: 3.0)
-Product.create(name:"salada de frutas", price: 3.50)
+Product.create(name:"sonho", price: 4.0, description: "feito na casa")
+Product.last.image.attach(io: File.open('./public/sonho.jpeg'), filename: 'sonho.jpeg')
+Product.create(name:"donut", price: 3.0, description: "feito na casa")
+Product.last.image.attach(io: File.open('./public/donut.jpeg'), filename: 'donut.jpeg')
+Product.create(name:"salada de frutas", price: 3.50, description: "fresquinha")
+Product.last.image.attach(io: File.open('./public/salada_de_frutas.jpg'), filename: 'salada_de_frutas.jpg')
+
 
 # bebidas
-Product.create(name:"suco", price: 5.0)
-Product.create(name:"agua", price: 2.50)
-Product.create(name:"cafe", price: 3.50)
+Product.create(name:"suco", price: 5.0, description: "de polpa natural")
+Product.last.image.attach(io: File.open('./public/suco.jpeg'), filename: 'suco.jpeg')
+Product.create(name:"agua", price: 2.50, description: "natural ou com gás")
+Product.last.image.attach(io: File.open('./public/agua.jpeg'), filename: 'agua.jpeg')
+Product.create(name:"cafe", price: 3.50, description: "grãos selecionados")
+Product.last.image.attach(io: File.open('./public/cafe.jpeg'), filename: 'cafe.jpeg')
+
 
 # categorias
 Category.create(name:"salgado")
