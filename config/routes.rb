@@ -43,8 +43,6 @@ Rails.application.routes.draw do
         patch 'update/:id', to:'favorites#update'
         delete 'delete/:id', to:'favorites#delete'
       end
-
-
     end
   end
 end

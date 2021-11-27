@@ -1,7 +1,7 @@
 class Api::V1::UserController < ApplicationController
 
     acts_as_token_authentication_handler_for User, only: :logout
-    wrap_parameters :user, include: [:name, :password, :email]
+    wrap_parameters :user, include: [:name, :password, :email, :is_admin]
 
     def login
         user = User.find_by!(email: params[:email])
@@ -36,7 +36,7 @@ class Api::V1::UserController < ApplicationController
     end
 
     def show
-        user = User.find(params[:id])
+        user = current_user
         render json: user, status: 200
     end
 
@@ -66,8 +66,6 @@ class Api::V1::UserController < ApplicationController
     private
 
     def user_params
-
-        params.require(:user).permit(:name, :email, :password, :profile_pic)
-
+        params.require(:user).permit(:name, :email, :password, :is_admin, :profile_pic)
     end
 end
