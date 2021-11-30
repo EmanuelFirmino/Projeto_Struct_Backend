@@ -38,6 +38,8 @@ Product.last.image.attach(io: File.open('./public/cafe.jpeg'), filename: 'cafe.j
 Category.create(name:"salgado")
 Category.create(name:"doce")
 Category.create(name:"bebida")
+Category.create(name:"todos")
+
 
 # relações
 Relation.create(product_id: 1, category_id: 1)
@@ -51,6 +53,21 @@ Relation.create(product_id: 6, category_id: 2)
 Relation.create(product_id: 7, category_id: 3)
 Relation.create(product_id: 8, category_id: 3)
 Relation.create(product_id: 9, category_id: 3)
+
+Relation.create(product_id: 9, category_id: 4)
+Relation.create(product_id: 8, category_id: 4)
+Relation.create(product_id: 7, category_id: 4)
+Relation.create(product_id: 6, category_id: 4)
+Relation.create(product_id: 5, category_id: 4)
+Relation.create(product_id: 4, category_id: 4)
+Relation.create(product_id: 3, category_id: 4)
+Relation.create(product_id: 2, category_id: 4)
+Relation.create(product_id: 1, category_id: 4)
+
+
+
+
+
 
 # users
 User.create(email:"user_1@mail.com", password:"123456", name:"user_1", is_admin: false)
@@ -69,4 +86,7 @@ Favorite.create(product_id: 6, user_id: 2)
 Favorite.create(product_id: 7, user_id: 3)
 Favorite.create(product_id: 8, user_id: 3)
 Favorite.create(product_id: 9, user_id: 3)
+
+
+
 
