@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace 'v1' do
 
       scope 'user' do
+        post 'login', to: 'user#login'
         get 'index', to: 'user#index'
         get 'show/:id', to: 'user#show'
         post 'create', to: 'user#create'
@@ -41,6 +42,7 @@ Rails.application.routes.draw do
         get 'index', to: 'favorites#index'
         post 'create', to: 'favorites#create'
         patch 'update/:id', to:'favorites#update'
+
         delete 'delete/:id', to:'favorites#delete'
       end
     end
