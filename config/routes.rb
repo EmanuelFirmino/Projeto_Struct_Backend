@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, skip: :all
+  get 'authentication_failure', to: 'application#authentication_failure', as: :authentication_failure
   namespace 'api' do
     namespace 'v1' do
 
