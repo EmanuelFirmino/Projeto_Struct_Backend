@@ -1,6 +1,6 @@
 class Api::V1::UserController < ApplicationController
 
-    acts_as_token_authentication_handler_for User, only: :logout
+    acts_as_token_authentication_handler_for User
     wrap_parameters :user, include: [:name, :password, :email, :is_admin]
 
     def login
@@ -21,7 +21,6 @@ class Api::V1::UserController < ApplicationController
         render json: error, status: :bad_request
     end
 
-
     def index
         users = User.all
         render json: users, status: 200
@@ -36,8 +35,7 @@ class Api::V1::UserController < ApplicationController
     end
 
     def show
-        user = current_user
-        render json: user, status: 200
+        render json: current_user, status: 200
     end
 
     def update

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       scope 'user' do
         post 'login', to: 'user#login'
         get 'index', to: 'user#index'
-        get 'show/:id', to: 'user#show'
+        get 'show', to: 'user#show'
         post 'create', to: 'user#create'
         patch 'update/:id', to: 'user#update'
         delete 'delete/:id', to: 'user#delete'
