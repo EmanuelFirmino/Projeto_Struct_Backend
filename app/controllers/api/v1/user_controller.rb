@@ -3,6 +3,7 @@ class Api::V1::UserController < ApplicationController
     acts_as_token_authentication_handler_for User, only: [:logout, :show]
     wrap_parameters :user, include: [:name, :password, :email, :is_admin]
 
+
     def login
         user = User.find_by!(email: params[:email])
         if user.valid_password?(params[:password])

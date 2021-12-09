@@ -23,7 +23,15 @@ class Api::V1::ProductsController < ApplicationController
 
     def update
         product = Product.find(params[:id])
+        product.relations.each do |relation|
+            relation.destroy!
+        end
         product.update!(product_params)
+
+        params[:product_multiops].each do |category_id|
+            Relation.create(product_id: product.id, category_id: category_id[:value])
+        end
+
         render json: product, status: :ok
     rescue StandardError
         head(:unprocessable_entity)
@@ -33,8 +41,8 @@ class Api::V1::ProductsController < ApplicationController
         product = Product.find(params[:id])
         product.destroy!
         render json: product, status: :ok
-    rescue StandardError
-        head(:bad_request)
+    rescue StandardError => error
+        render json: error, status: :bad_request
     end
 
     def my_categories
@@ -51,7 +59,8 @@ class Api::V1::ProductsController < ApplicationController
             :name,
             :price,
             :description,
-            :image
+            :image,
+            product_multiops: []
         )
     end
 
