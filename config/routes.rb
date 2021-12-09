@@ -21,6 +21,7 @@ Rails.application.routes.draw do
         patch 'update/:id', to:'products#update'
         delete 'delete/:id', to:'products#delete'
         get 'my_categories/:id', to:"products#my_categories"
+        delete 'delete_my_relations/:id', to:"products#delete_my_relations"
       end
 
       scope 'categories' do
