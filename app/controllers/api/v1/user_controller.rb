@@ -1,7 +1,8 @@
 class Api::V1::UserController < ApplicationController
 
-    acts_as_token_authentication_handler_for User
-    wrap_parameters :user, include: [:name, :password, :email, :is_admin], except: [:index, :show]
+    acts_as_token_authentication_handler_for User, only: [:logout, :show]
+    wrap_parameters :user, include: [:name, :password, :email, :is_admin]
+
 
     def login
         user = User.find_by!(email: params[:email])
@@ -64,6 +65,6 @@ class Api::V1::UserController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:name, :email, :password, :is_admin, :profile_pic)
+        params.require(:user).permit(:name, :email, :password, :profile_pic)
     end
 end

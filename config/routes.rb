@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users, skip: :all
+  devise_for :users, skip: :all, only: [:show, :logout]
   get 'authentication_failure', to: 'application#authentication_failure', as: :authentication_failure
+
   namespace 'api' do
     namespace 'v1' do
-
       scope 'user' do
         post 'login', to: 'user#login'
+        get 'logout', to: 'user#logout'
         get 'index', to: 'user#index'
         get 'show', to: 'user#show'
         post 'create', to: 'user#create'
