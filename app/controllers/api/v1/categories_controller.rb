@@ -1,5 +1,6 @@
 class Api::V1::CategoriesController < ApplicationController
 
+    before_action :is_admin, only: [:create, :update, :delete]
     def index
         categories = Category.all
         render json: categories, status: :ok 
