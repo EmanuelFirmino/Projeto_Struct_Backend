@@ -32,7 +32,7 @@ class Api::V1::FavoritesController < ApplicationController
 
     private
 
-    def relation_params
+    def favorite_params
         params.require(:favorite).permit(
             :user_id,
             :product_id,
