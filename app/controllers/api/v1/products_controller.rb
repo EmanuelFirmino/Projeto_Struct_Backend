@@ -52,6 +52,20 @@ class Api::V1::ProductsController < ApplicationController
         head(:not_found) 
     end
 
+    def add_imageFile
+        product = Product.find(params[:id])
+
+        if product.image.attached?
+            product.image.purge
+        end
+
+        params[:imageFile].each do |imageFile|
+            product.image.attach(imageFile)
+        end
+    rescue StandardError => error
+        render json: error, status: :bad_request
+    end
+
     private
 
     def product_params

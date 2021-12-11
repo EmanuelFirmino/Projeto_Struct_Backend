@@ -7,7 +7,7 @@ class ProductSerializer < ActiveModel::Serializer
     if object.image.attached?
       Rails.application.routes.url_helpers.rails_blob_path(object.image, only_path: true)
     else
-      "este produto não possui imagem"
+      "produto sem imagem"
     end
   end
 
