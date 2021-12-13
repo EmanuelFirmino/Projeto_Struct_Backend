@@ -1,8 +1,7 @@
 class Api::V1::UserController < ApplicationController
 
-    acts_as_token_authentication_handler_for User, only: [:index, :logout, :show]
-    before_action :is_admin, only: :index
-    wrap_parameters :user, include: [:name, :password, :email, :profile_pic, :is_admin]
+    acts_as_token_authentication_handler_for User, only: [:logout, :show]
+    wrap_parameters :user, include: [:name, :password, :email, :profile_pic]
     
     def login
         user = User.find_by!(email: params[:email])
