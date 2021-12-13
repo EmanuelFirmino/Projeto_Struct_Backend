@@ -73,6 +73,8 @@ Relation.create(product_id: 1, category_id: 4)
 User.create(email:"user_1@mail.com", password:"123456", name:"user_1", is_admin: false)
 User.create(email:"user_2@mail.com", password:"123456", name:"user_2", is_admin: false)
 User.create(email:"user_3@mail.com", password:"123456", name:"user_3", is_admin: false)
+User.create(email:"admin@mail.com", password:"123456", name:"admin", is_admin: true)
+
 
 # favorites
 Favorite.create(product_id: 1, user_id: 1)
