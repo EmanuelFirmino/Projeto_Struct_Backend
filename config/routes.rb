@@ -23,6 +23,7 @@ Rails.application.routes.draw do
         delete 'delete/:id', to:'products#delete'
         get 'my_categories/:id', to:"products#my_categories"
         delete 'delete_my_relations/:id', to:"products#delete_my_relations"
+        post 'add_imageFile/:id', to: "products#add_imageFile"
       end
 
       scope 'categories' do

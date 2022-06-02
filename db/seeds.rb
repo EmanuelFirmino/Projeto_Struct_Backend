@@ -14,6 +14,14 @@ Product.create(name:"pastel", price: 6.0, description: "frito na hora")
 Product.last.image.attach(io: File.open('./public/pastel.jpg'), filename: 'pastel.jpg')
 Product.create(name:"misto", price: 3.50, description: "misto tradional")
 Product.last.image.attach(io: File.open('./public/misto.jpeg'), filename: 'misto.jpeg')
+Product.create(name:"espetinho", price: 4.50, description: "assado na hora")
+Product.last.image.attach(io: File.open('./public/espetinho.jpg'), filename: 'espetinho.jpg')
+Product.create(name:"pão na chapa", price: 3.50, description: "super crocante")
+Product.last.image.attach(io: File.open('./public/pao_na_chapa.jpg'), filename: 'pao_na_chapa.jpg')
+
+
+
+
 
 
 # doces
@@ -23,6 +31,12 @@ Product.create(name:"donut", price: 3.0, description: "feito na casa")
 Product.last.image.attach(io: File.open('./public/donut.jpeg'), filename: 'donut.jpeg')
 Product.create(name:"salada de frutas", price: 3.50, description: "fresquinha")
 Product.last.image.attach(io: File.open('./public/salada_de_frutas.jpg'), filename: 'salada_de_frutas.jpg')
+Product.create(name:"bomba de chocolate", price: 3.50, description: "super recheada")
+Product.last.image.attach(io: File.open('./public/bomba.jpg'), filename: 'bomba.jpg')
+Product.create(name:"pudim", price: 3.50, description: "super macio")
+Product.last.image.attach(io: File.open('./public/pudim.jpg'), filename: 'pudim.jpg')
+
+
 
 
 # bebidas
@@ -32,6 +46,14 @@ Product.create(name:"agua", price: 2.50, description: "natural ou com gás")
 Product.last.image.attach(io: File.open('./public/agua.jpeg'), filename: 'agua.jpeg')
 Product.create(name:"cafe", price: 3.50, description: "grãos selecionados")
 Product.last.image.attach(io: File.open('./public/cafe.jpeg'), filename: 'cafe.jpeg')
+Product.create(name:"cerveja", price: 3.50, description: "estupidamente gelada")
+Product.last.image.attach(io: File.open('./public/cerveja.jpg'), filename: 'cerveja.jpg')
+Product.create(name:"refrigerante", price: 3.50, description: "beba com moderação")
+Product.last.image.attach(io: File.open('./public/refri.jpg'), filename: 'refri.jpg')
+
+
+
+
 
 
 # categorias
@@ -45,15 +67,29 @@ Category.create(name:"todos")
 Relation.create(product_id: 1, category_id: 1)
 Relation.create(product_id: 2, category_id: 1)
 Relation.create(product_id: 3, category_id: 1)
+Relation.create(product_id: 4, category_id: 1)
+Relation.create(product_id: 5, category_id: 1)
 
-Relation.create(product_id: 4, category_id: 2)
-Relation.create(product_id: 5, category_id: 2)
 Relation.create(product_id: 6, category_id: 2)
+Relation.create(product_id: 7, category_id: 2)
+Relation.create(product_id: 8, category_id: 2)
+Relation.create(product_id: 9, category_id: 2)
+Relation.create(product_id: 10, category_id: 2)
 
-Relation.create(product_id: 7, category_id: 3)
-Relation.create(product_id: 8, category_id: 3)
-Relation.create(product_id: 9, category_id: 3)
 
+Relation.create(product_id: 11, category_id: 3)
+Relation.create(product_id: 12, category_id: 3)
+Relation.create(product_id: 13, category_id: 3)
+Relation.create(product_id: 14, category_id: 3)
+Relation.create(product_id: 15, category_id: 3)
+
+
+Relation.create(product_id: 15, category_id: 4)
+Relation.create(product_id: 14, category_id: 4)
+Relation.create(product_id: 13, category_id: 4)
+Relation.create(product_id: 12, category_id: 4)
+Relation.create(product_id: 11, category_id: 4)
+Relation.create(product_id: 10, category_id: 4)
 Relation.create(product_id: 9, category_id: 4)
 Relation.create(product_id: 8, category_id: 4)
 Relation.create(product_id: 7, category_id: 4)
@@ -73,6 +109,8 @@ Relation.create(product_id: 1, category_id: 4)
 User.create(email:"user_1@mail.com", password:"123456", name:"user_1", is_admin: false)
 User.create(email:"user_2@mail.com", password:"123456", name:"user_2", is_admin: false)
 User.create(email:"user_3@mail.com", password:"123456", name:"user_3", is_admin: false)
+User.create(email:"admin@mail.com", password:"123456", name:"admin", is_admin: true)
+
 
 # favorites
 Favorite.create(product_id: 1, user_id: 1)

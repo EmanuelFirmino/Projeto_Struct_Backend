@@ -1,7 +1,5 @@
 class Api::V1::ProductsController < ApplicationController
 
-    before_action :is_admin, only: [:create, :update, :delete]
-
     def index
         products = Product.all
         render json: products, status: :ok 
@@ -25,18 +23,28 @@ class Api::V1::ProductsController < ApplicationController
 
     def update
         product = Product.find(params[:id])
-        product.relations.each do |relation|
-            relation.destroy!
-        end
-        product.update!(product_params)
 
-        params[:product_multiops].each do |category_id|
-            Relation.create(product_id: product.id, category_id: category_id[:value])
+        if product.relations != nil 
+
+            product.relations.each do |relation|
+                relation.destroy!
+            end
+            product.update!(product_params)
+    
+            params[:product_multiops].each do |category_id|
+                Relation.create(product_id: product.id, category_id: category_id[:value])
+            end
+
+        else
+            product.update!(product_params)
+        
         end
+    
+       
 
         render json: product, status: :ok
-    rescue StandardError
-        head(:unprocessable_entity)
+    rescue StandardError => error
+        render json: error, status: :bad_request
     end
 
     def delete
@@ -53,6 +61,22 @@ class Api::V1::ProductsController < ApplicationController
     rescue StandardError
         head(:not_found) 
     end
+
+    def add_imageFile
+        product = Product.find(params[:id])
+
+        if product.image.attached?
+            product.image.purge
+        end
+
+        params[:imageFile].each do |imageFile|
+            product.image.attach(imageFile)
+        end
+        render json: product
+    rescue StandardError => error
+        render json: error, status: :bad_request
+    end
+
 
     private
 
