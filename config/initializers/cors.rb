@@ -8,7 +8,7 @@
 
  Rails.application.config.middleware.insert_before 0, Rack::Cors do
    allow do
-     origins 'https://padoca.ml'
+     origins 'https://oyster-app-waicl.ondigitalocean.app/'
 
      resource '*',
        headers: :any,
